@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <style>
+        /* Custom styles for the form */
+        .form-wrapper {
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+
+        .my-form {
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .form-heading {
+            color: #333;
+        }
+
+        .form-fields {
+            margin-bottom: 10px;
+        }
+
+        .form-fields input[type="text"],
+        .form-fields input[type="email"],
+        .form-fields textarea {
+            width: 50%; /* Adjust the width as needed */
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .submit-btn {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .submit-btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+
+    <div class="form-wrapper">
+        <form method="POST" class="my-form">
+            {% csrf_token %}
+            <h1 class="form-heading">Dear Participant enter your:</h1>
+            <div class="form-fields">
+                {{ form.as_p }}
+            </div>
+            <button type="submit" class="submit-btn">Save</button>
+        </form>
+    </div>
+{% endblock content %}

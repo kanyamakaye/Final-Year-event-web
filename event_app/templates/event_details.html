@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Event Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table {
+            width: 50%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 15px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+    <script>
+        function downloadEventDetails() {
+            const eventTitle = "{{ event.title }}";
+            const eventLocation = "{{ event.location }}";
+            const eventCategory = "{{ event.category }}";
+
+            const content = `Event Details:\n\nTitle: ${eventTitle}\nLocation: ${eventLocation}\nCategory: ${eventCategory}`;
+            const blob = new Blob([content], { type: "text/plain" });
+            const link = document.createElement("a");
+
+            link.href = URL.createObjectURL(blob);
+            link.download = "event_details.txt";
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    </script>
+</head>
+<body>
+    <h1>Event Details</h1>
+    
+    <table>
+        <tr>
+            <th>Title</th>
+            <th>Location</th>
+            <th>Category</th>
+        </tr>
+        <tr>
+            <td>{{ event.title }}</td>
+            <td>{{ event.location }}</td>
+            <td>{{ event.category }}</td>
+        </tr>
+    </table>
+
+    <button onclick="downloadEventDetails()">Download Event Details</button>
+</body>
+</html>

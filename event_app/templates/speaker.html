@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speaker Management List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            padding: 20px;
+            margin: 0;
+            position: relative;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .register-speaker-link {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            text-decoration: bold;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 10px;
+            padding: 5px 10px;
+            font-size: 16px;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .register-speaker-link:hover {
+            background-color: #0056b3;
+        }
+
+        .speaker-links a {
+            margin-left: 10px;
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .speaker-links a:hover {
+            color: #1862ab;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Speaker List</h1>
+    <!--<a href="/speaker/forms" class="register-speaker-link">Register a speaker here</a>-->
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Biography</th>
+                <th>Email</th>
+                <th>Phone Number</th>
+                <th>Social Links</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for speaker in speakers %}
+                <tr>
+                    <td>{{ speaker.name }}</td>
+                    <td>{{ speaker.biography }}</td>
+                    <td>{{ speaker.email }}</td>
+                    <td>{{ speaker.phone_number }}</td>
+                    <td class="speaker-links">
+                        <a href="{{ speaker.linkedin_link }}" target="_blank">LinkedIn</a>
+                        <a href="{{ speaker.twitter_link }}" target="_blank">Twitter</a>
+                    </td>
+                    <td>
+                        <a href="details/{{ speaker.id }}" style="color: #007bff;">View Details</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+
+</html>
