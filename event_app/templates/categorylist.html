@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Category List</title>
+    <!-- Add some CSS for styling -->
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -14,36 +15,33 @@
             text-align: center;
             margin-top: 30px;
         }
-        table {
-            width: 50%;
-            margin: 20px auto;
-            border-collapse: collapse;
-            background-color: #fff;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            border-radius: 5px;
-            overflow: hidden;
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0 auto;
+            max-width: 400px;
         }
-        th, td {
+        li {
             padding: 10px;
             border: 1px solid #ccc;
-            text-align: left;
+            background-color: #fff;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.2s ease-in-out;
         }
-        th {
-            background-color: #4CAF50;
-            color: white;
-        }
-        tr:hover {
+        li:hover {
             background-color: #f9f9f9;
         }
         .nav-item {
             background-color: #4CAF50;
             color: white;
             padding: 10px 20px;
-            text-align: center;
+            text-align: left; /* Changed to left */
             text-decoration: none;
             display: block;
             border-radius: 5px;
-            margin: 20px auto;
+            margin: 20px 0; /* Removed auto margin and set margin-top to 20px */
             max-width: 200px;
         }
         .nav-item:hover {
@@ -53,18 +51,11 @@
 </head>
 <body>
     <h1>Category List</h1>
-    <!-- <a class="nav-item" href="/cat/form">Register a Category Here</a> -->
-    <table>
-        <tr>
-            <th>#</th>
-            <th>Category Name</th>
-        </tr>
+    <a class="nav-item" href="/cat/form">Register a Category Here</a>
+    <ul>
         {% for cat in category %}
-        <tr>
-            <td>{{ loop.index }}</td>
-            <td>{{ cat.name }}</td>
-        </tr>
+            <li>{{ cat.name }}</li>
         {% endfor %}
-    </table>
+    </ul>
 </body>
 </html>

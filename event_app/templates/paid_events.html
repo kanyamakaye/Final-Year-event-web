@@ -1,87 +1,126 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Paid Events</title>
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Paid Events{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1 class="mb-4">Paid Events</h1>
+    
+    <!-- Statistics Cards -->
+    <div class="row mb-4">
+        <div class="col-md-4">
+            <div class="card bg-primary text-white">
+                <div class="card-body">
+                    <h5 class="card-title">Total Paid Events</h5>
+                    <h2>{{ total_paid_events }}</h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card bg-success text-white">
+                <div class="card-body">
+                    <h5 class="card-title">Upcoming Events</h5>
+                    <h2>{{ upcoming_count }}</h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card bg-info text-white">
+                <div class="card-body">
+                    <h5 class="card-title">Past Events</h5>
+                    <h2>{{ past_count }}</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Category Filter -->
+    <div class="card mb-4">
+        <div class="card-body">
+            <h5 class="card-title">Filter by Category</h5>
+            <div class="btn-group" role="group">
+                <a href="{% url 'paid_events' %}" class="btn btn-outline-primary {% if not selected_category %}active{% endif %}">
+                    All Categories
+                </a>
+                {% for category in categories %}
+                <a href="{% url 'paid_events' %}?category={{ category.id }}" 
+                   class="btn btn-outline-primary {% if selected_category == category.id %}active{% endif %}">
+                    {{ category.name }}
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    
+    <!-- Events List -->
+    <div class="row">
+        {% for event in paid_events %}
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                {% if event.image %}
+                <img src="{{ event.image.url }}" class="card-img-top" alt="{{ event.title }}">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ event.title }}</h5>
+                    <p class="card-text">
+                        <strong>Category:</strong> {{ event.category.name }}<br>
+                        <strong>Date:</strong> {{ event.start_date|date:"F d, Y" }} - {{ event.end_date|date:"F d, Y" }}<br>
+                        <strong>Location:</strong> {{ event.location }}<br>
+                        <strong>Price:</strong> ${{ event.price }}
+                    </p>
+                    <p class="card-text">{{ event.description|truncatewords:30 }}</p>
+                </div>
+                <div class="card-footer">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <a href="{% url 'event_details' event.title %}" class="btn btn-primary">View Details</a>
+                        <span class="badge {% if event.start_date > timezone.now %}bg-success{% else %}bg-secondary{% endif %}">
+                            {% if event.start_date > timezone.now %}Upcoming{% else %}Past{% endif %}
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="col-12">
+            <div class="alert alert-info">
+                No paid events found.
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
-            margin: 0;
-            padding: 0;
+    .card {
+        border: none;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s;
+    }
+    
+    .card:hover {
+        transform: translateY(-5px);
+    }
+    
+    .card-img-top {
+        height: 200px;
+        object-fit: cover;
+    }
+    
+    .btn-group {
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+    
+    .badge {
+        font-size: 0.9rem;
+        padding: 0.5em 1em;
+    }
+    
+    @media (max-width: 768px) {
+        .card-img-top {
+            height: 150px;
         }
-
-        h1 {
-            text-align: center;
-            margin-top: 20px;
-            color: #333;
-        }
-
-        .table-container {
-            width: 80%;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 20px;
-        }
-
-        th, td {
-            padding: 10px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-
-        th {
-            background-color: #007bff;
-            color: white;
-        }
-
-        tr:hover {
-            background-color: #f1f1f1;
-        }
-
-        .footer {
-            text-align: center;
-            margin-top: 20px;
-            color: #888;
         }
     </style>
-</head>
-<body>
-    <h1>Paid Events</h1>
-    <div class="table-container">
-        <table>
-            <thead>
-                <tr>
-                    <th>Event Title</th>
-                    <th>Start Date</th>
-                    <th>End Date</th>
-                    <th>Location</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for event in events %}
-                    <tr>
-                        <td>{{ event.title }}</td>
-                        <td>{{ event.start_date }}</td>
-                        <td>{{ event.end_date }}</td>
-                        <td>{{ event.location }}</td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
-
-    <div class="footer">
-        <p>&copy; 2025 Paid Events. All rights reserved.</p>
-    </div>
-</body>
-</html>
+{% endblock %}

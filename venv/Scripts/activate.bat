@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set VIRTUAL_ENV=C:\Users\user\Desktop\ASSIGNMENT\event-management-project-assignment-team\event_project\venv
+set VIRTUAL_ENV=C:\Users\HP\Desktop\event\Final Project Implement\event-management-project-assignment-team-main\event_project\venv
 
 if not defined PROMPT set PROMPT=$P$G
 
