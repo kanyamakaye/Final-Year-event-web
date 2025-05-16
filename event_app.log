@@ -9915,3 +9915,192 @@ AttributeError: Cannot find 'speaker_management_set' on Event_management object,
 2025-05-16 09:15:28,327 - event_app.views - ERROR - Error in home view: Cannot resolve keyword 'is_paid' into field. Choices are: available_tickets, cartitem, category, category_id, description, end_date, id, image, is_free, location, participant_management, payment, price, schedule_management, start_date, title
 2025-05-16 09:18:43,083 - event_app.views - ERROR - Error in home view: Cannot resolve keyword 'is_paid' into field. Choices are: available_tickets, cartitem, category, category_id, description, end_date, id, image, is_free, location, participant_management, payment, price, schedule_management, start_date, title
 2025-05-16 09:22:54,037 - event_app.views - ERROR - Error in home view: Cannot resolve keyword 'is_paid' into field. Choices are: available_tickets, cartitem, category, category_id, description, end_date, id, image, is_free, location, participant_management, payment, price, schedule_management, start_date, title
+2025-05-16 10:08:36,735 - event_app.views - ERROR - Error in paid_events view: Cannot resolve keyword 'is_paid' into field. Choices are: available_tickets, cartitem, category, category_id, description, end_date, id, image, is_free, location, participant_management, payment, price, schedule_management, start_date, title
+Traceback (most recent call last):
+  File "C:\Users\HP\Desktop\event\Final Project Implement\event-management-project-assignment-team-main\event_project\event_app\views.py", line 115, in paid_events
+    paid_events = Event_management.objects.filter(
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\Desktop\event\Final Project Implement\.venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\Desktop\event\Final Project Implement\.venv\Lib\site-packages\django\db\models\query.py", line 1436, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\Desktop\event\Final Project Implement\.venv\Lib\site-packages\django\db\models\query.py", line 1454, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "C:\Users\HP\Desktop\event\Final Project Implement\.venv\Lib\site-packages\django\db\models\query.py", line 1461, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "C:\Users\HP\Desktop\event\Final Project Implement\.venv\Lib\site-packages\django\db\models\sql\query.py", line 1534, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\Desktop\event\Final Project Implement\.venv\Lib\site-packages\django\db\models\sql\query.py", line 1565, in _add_q
+    child_clause, needed_inner = self.build_filter(
+                                 ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\Desktop\event\Final Project Implement\.venv\Lib\site-packages\django\db\models\sql\query.py", line 1415, in build_filter
+    lookups, parts, reffed_expression = self.solve_lookup_type(arg, summarize)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\Desktop\event\Final Project Implement\.venv\Lib\site-packages\django\db\models\sql\query.py", line 1225, in solve_lookup_type
+    _, field, _, lookup_parts = self.names_to_path(lookup_splitted, self.get_meta())
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\Desktop\event\Final Project Implement\.venv\Lib\site-packages\django\db\models\sql\query.py", line 1713, in names_to_path
+    raise FieldError(
+django.core.exceptions.FieldError: Cannot resolve keyword 'is_paid' into field. Choices are: available_tickets, cartitem, category, category_id, description, end_date, id, image, is_free, location, participant_management, payment, price, schedule_management, start_date, title
+2025-05-16 10:08:36,791 - event_app.views - ERROR - Error in home view: Cannot resolve keyword 'is_paid' into field. Choices are: available_tickets, cartitem, category, category_id, description, end_date, id, image, is_free, location, participant_management, payment, price, schedule_management, start_date, title
+2025-05-16 10:08:39,597 - event_app.views - ERROR - Error in free_events view: Cannot find 'speaker_management_set' on Event_management object, 'speaker_management_set' is an invalid parameter to prefetch_related()
+Traceback (most recent call last):
+  File "C:\Users\HP\Desktop\event\Final Project Implement\event-management-project-assignment-team-main\event_project\event_app\views.py", line 215, in free_events
+    return render(request, 'free_events.html', context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\Desktop\event\Final Project Implement\.venv\Lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\Desktop\event\Final Project Implement\.venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\Desktop\event\Final Project Implement\.venv\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\Desktop\event\Final Project Implement\.venv\Lib\site-packages\django\template\base.py", line 175, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\Desktop\event\Final Project Implement\.venv\Lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\Desktop\event\Final Project Implement\.venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\Desktop\event\Final Project Implement\.venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\Desktop\event\Final Project Implement\.venv\Lib\site-packages\django\template\loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\Desktop\event\Final Project Implement\.venv\Lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\Desktop\event\Final Project Implement\.venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\Desktop\event\Final Project Implement\.venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\Desktop\event\Final Project Implement\.venv\Lib\site-packages\django\template\loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\Desktop\event\Final Project Implement\.venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\Desktop\event\Final Project Implement\.venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\Desktop\event\Final Project Implement\.venv\Lib\site-packages\django\template\defaulttags.py", line 320, in render
+    if match:
+       ^^^^^
+  File "C:\Users\HP\Desktop\event\Final Project Implement\.venv\Lib\site-packages\django\db\models\query.py", line 412, in __bool__
+    self._fetch_all()
+  File "C:\Users\HP\Desktop\event\Final Project Implement\.venv\Lib\site-packages\django\db\models\query.py", line 1883, in _fetch_all
+    self._prefetch_related_objects()
+  File "C:\Users\HP\Desktop\event\Final Project Implement\.venv\Lib\site-packages\django\db\models\query.py", line 1273, in _prefetch_related_objects
+    prefetch_related_objects(self._result_cache, *self._prefetch_related_lookups)
+  File "C:\Users\HP\Desktop\event\Final Project Implement\.venv\Lib\site-packages\django\db\models\query.py", line 2296, in prefetch_related_objects
+    raise AttributeError(
+AttributeError: Cannot find 'speaker_management_set' on Event_management object, 'speaker_management_set' is an invalid parameter to prefetch_related()
+2025-05-16 10:08:39,625 - event_app.views - ERROR - Error in home view: Cannot resolve keyword 'is_paid' into field. Choices are: available_tickets, cartitem, category, category_id, description, end_date, id, image, is_free, location, participant_management, payment, price, schedule_management, start_date, title
+2025-05-16 21:47:32,914 - event_app.views - ERROR - Error in home view: Cannot resolve keyword 'is_paid' into field. Choices are: available_tickets, cartitem, category, category_id, description, end_date, id, image, is_free, location, participant_management, payment, price, schedule_management, start_date, title
+2025-05-16 21:50:18,322 - event_app.views - ERROR - Error in home view: Cannot resolve keyword 'is_paid' into field. Choices are: available_tickets, cartitem, category, category_id, description, end_date, id, image, is_free, location, participant_management, payment, price, schedule_management, start_date, title
+2025-05-16 23:59:19,599 - event_app.views - ERROR - Error in paid_events view: Cannot resolve keyword 'is_paid' into field. Choices are: available_tickets, cartitem, category, category_id, description, end_date, id, image, is_free, location, participant_management, payment, price, schedule_management, start_date, title
+Traceback (most recent call last):
+  File "C:\Users\HP\Desktop\event\Final Project Implement\event-management-project-assignment-team-main\event_project\event_app\views.py", line 115, in paid_events
+    paid_events = Event_management.objects.filter(
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\Desktop\event\Final Project Implement\.venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\Desktop\event\Final Project Implement\.venv\Lib\site-packages\django\db\models\query.py", line 1436, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\Desktop\event\Final Project Implement\.venv\Lib\site-packages\django\db\models\query.py", line 1454, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "C:\Users\HP\Desktop\event\Final Project Implement\.venv\Lib\site-packages\django\db\models\query.py", line 1461, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "C:\Users\HP\Desktop\event\Final Project Implement\.venv\Lib\site-packages\django\db\models\sql\query.py", line 1534, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\Desktop\event\Final Project Implement\.venv\Lib\site-packages\django\db\models\sql\query.py", line 1565, in _add_q
+    child_clause, needed_inner = self.build_filter(
+                                 ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\Desktop\event\Final Project Implement\.venv\Lib\site-packages\django\db\models\sql\query.py", line 1415, in build_filter
+    lookups, parts, reffed_expression = self.solve_lookup_type(arg, summarize)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\Desktop\event\Final Project Implement\.venv\Lib\site-packages\django\db\models\sql\query.py", line 1225, in solve_lookup_type
+    _, field, _, lookup_parts = self.names_to_path(lookup_splitted, self.get_meta())
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\Desktop\event\Final Project Implement\.venv\Lib\site-packages\django\db\models\sql\query.py", line 1713, in names_to_path
+    raise FieldError(
+django.core.exceptions.FieldError: Cannot resolve keyword 'is_paid' into field. Choices are: available_tickets, cartitem, category, category_id, description, end_date, id, image, is_free, location, participant_management, payment, price, schedule_management, start_date, title
+2025-05-16 23:59:19,997 - event_app.views - ERROR - Error in home view: Cannot resolve keyword 'is_paid' into field. Choices are: available_tickets, cartitem, category, category_id, description, end_date, id, image, is_free, location, participant_management, payment, price, schedule_management, start_date, title
+2025-05-16 23:59:44,628 - event_app.views - ERROR - Error in free_events view: Cannot find 'speaker_management_set' on Event_management object, 'speaker_management_set' is an invalid parameter to prefetch_related()
+Traceback (most recent call last):
+  File "C:\Users\HP\Desktop\event\Final Project Implement\event-management-project-assignment-team-main\event_project\event_app\views.py", line 215, in free_events
+    return render(request, 'free_events.html', context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\Desktop\event\Final Project Implement\.venv\Lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\Desktop\event\Final Project Implement\.venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\Desktop\event\Final Project Implement\.venv\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\Desktop\event\Final Project Implement\.venv\Lib\site-packages\django\template\base.py", line 175, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\Desktop\event\Final Project Implement\.venv\Lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\Desktop\event\Final Project Implement\.venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\Desktop\event\Final Project Implement\.venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\Desktop\event\Final Project Implement\.venv\Lib\site-packages\django\template\loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\Desktop\event\Final Project Implement\.venv\Lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\Desktop\event\Final Project Implement\.venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\Desktop\event\Final Project Implement\.venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\Desktop\event\Final Project Implement\.venv\Lib\site-packages\django\template\loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\Desktop\event\Final Project Implement\.venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\Desktop\event\Final Project Implement\.venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\Desktop\event\Final Project Implement\.venv\Lib\site-packages\django\template\defaulttags.py", line 320, in render
+    if match:
+       ^^^^^
+  File "C:\Users\HP\Desktop\event\Final Project Implement\.venv\Lib\site-packages\django\db\models\query.py", line 412, in __bool__
+    self._fetch_all()
+  File "C:\Users\HP\Desktop\event\Final Project Implement\.venv\Lib\site-packages\django\db\models\query.py", line 1883, in _fetch_all
+    self._prefetch_related_objects()
+  File "C:\Users\HP\Desktop\event\Final Project Implement\.venv\Lib\site-packages\django\db\models\query.py", line 1273, in _prefetch_related_objects
+    prefetch_related_objects(self._result_cache, *self._prefetch_related_lookups)
+  File "C:\Users\HP\Desktop\event\Final Project Implement\.venv\Lib\site-packages\django\db\models\query.py", line 2296, in prefetch_related_objects
+    raise AttributeError(
+AttributeError: Cannot find 'speaker_management_set' on Event_management object, 'speaker_management_set' is an invalid parameter to prefetch_related()
+2025-05-16 23:59:44,813 - event_app.views - ERROR - Error in home view: Cannot resolve keyword 'is_paid' into field. Choices are: available_tickets, cartitem, category, category_id, description, end_date, id, image, is_free, location, participant_management, payment, price, schedule_management, start_date, title
+2025-05-17 00:03:50,065 - event_app.views - ERROR - Error in home view: Cannot resolve keyword 'is_paid' into field. Choices are: available_tickets, cartitem, category, category_id, description, end_date, id, image, is_free, location, participant_management, payment, price, schedule_management, start_date, title
+2025-05-17 00:09:39,153 - event_app.views - ERROR - Error in home view: Cannot resolve keyword 'is_paid' into field. Choices are: available_tickets, cartitem, category, category_id, description, end_date, id, image, is_free, location, participant_management, payment, price, schedule_management, start_date, title
+2025-05-17 00:09:40,130 - event_app.views - ERROR - Error in home view: Cannot resolve keyword 'is_paid' into field. Choices are: available_tickets, cartitem, category, category_id, description, end_date, id, image, is_free, location, participant_management, payment, price, schedule_management, start_date, title
+2025-05-17 00:09:40,292 - event_app.views - ERROR - Error in home view: Cannot resolve keyword 'is_paid' into field. Choices are: available_tickets, cartitem, category, category_id, description, end_date, id, image, is_free, location, participant_management, payment, price, schedule_management, start_date, title
+2025-05-17 00:11:05,388 - event_app.views - ERROR - Error in home view: Cannot resolve keyword 'is_paid' into field. Choices are: available_tickets, cartitem, category, category_id, description, end_date, id, image, is_free, location, participant_management, payment, price, schedule_management, start_date, title

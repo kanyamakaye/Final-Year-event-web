@@ -1317,3 +1317,10 @@ def create_payment(request):
 def payment_list(request):
     payments = Payment.objects.select_related('participant', 'event').all()
     return render(request, 'payment_list.html', {'payments': payments})
+
+def paid_events(request):
+    paid_events = Event_management.objects.filter(event_charge__gt=0)
+
+    return render(request,'paid_events.html',{'paid_events': paid_events})
+
+    

@@ -13,8 +13,6 @@ urlpatterns = [
     path('events/all/', views.event_details, name='event_list'),
     path('event/<str:event_title>/', views.event_details, name='event_details'),
     path('event-form/', views.event_forms, name='event_forms'),
-    path('paid-events/', views.paid_events, name='paid_events'),
-    path('free-events/', views.free_events, name='free_events'),
     path('upcoming/', views.upcoming, name='upcoming'),
     
     # Speaker Management URLs
@@ -93,4 +91,7 @@ urlpatterns = [
     #testing payment
     path('payment/', views.create_payment, name='create_payment'),
     path('payments/', views.payment_list, name='payment_list'),
+
+    #free event testing 
+    
 ]
