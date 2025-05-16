@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-y4tc441-t*lv^eln)p0!7&qsot(a2-@ch%7_8@@_=05lb1lw9o
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    https://online-event-management-system-project.onrender.com
+    online-event-management-system-project.onrender.com
 ]
 
 
