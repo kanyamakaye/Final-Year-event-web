@@ -30,6 +30,9 @@ ALLOWED_HOSTS = [
 ]
 
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://online-event-management-system-project.onrender.com",
+]
 
 
 # Application definition
