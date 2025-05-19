@@ -93,5 +93,6 @@ urlpatterns = [
     path('payments/', views.payment_list, name='payment_list'),
 
     #free event testing 
-    
+     path('events/paid/', views.paid_events_view, name='paid_events'),
+     path('events/free/', views.free_events_view, name='free_events'),
 ]

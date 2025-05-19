@@ -1323,4 +1323,11 @@ def paid_events(request):
 
     return render(request,'paid_events.html',{'paid_events': paid_events})
 
-    
+def paid_events_view(request):
+    # Events that are not free and have price > 0
+    paid_events = Event_management.objects.filter(is_free=False, price__gt=0)
+    return render(request, 'paid_events.html', {'events': paid_events})
+def free_events_view(request):
+    # Events marked as free and price = 0
+    free_events = Event_management.objects.filter(is_free=True, price=0)
+    return render(request, 'free_events.html', {'events': free_events})

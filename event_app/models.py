@@ -23,7 +23,7 @@ class Event_management(models.Model):
     end_date = models.DateField()
     location = models.CharField(max_length=100)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    is_free = models.BooleanField(default=False)
+    is_free = models.BooleanField(default=True)
     price = models.DecimalField(max_digits=8, decimal_places=2, default=0.00)
     image = models.ImageField(upload_to='events/', blank=True, null=True)
     available_tickets = models.PositiveIntegerField(default=0)
@@ -46,12 +46,12 @@ class Speaker_management(models.Model):
 
 class Participant_management(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True)
-    name = models.CharField(max_length=150,default='Not Specified')
+    name = models.CharField(max_length=150)
     email = models.EmailField()
-    phone_number = models.CharField(max_length=20,default='Not Specified')
-    sex = models.CharField(max_length=1,default='Not Specified')
-    university = models.CharField(max_length=200,default='Not Specified')
-    Event = models.ForeignKey(Event_management, on_delete=models.CASCADE,default=1)
+    phone_number = models.CharField(max_length=20)
+    sex = models.CharField(max_length=1)
+    university = models.CharField(max_length=200)
+    Event = models.ForeignKey(Event_management, on_delete=models.CASCADE)
     def __str__(self):
         return self.name
 
