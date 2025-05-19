@@ -25,10 +25,128 @@ SECRET_KEY = 'django-insecure-y4tc441-t*lv^eln)p0!7&qsot(a2-@ch%7_8@@_=05lb1lw9o
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = [
+    'online-event-management-system-project.onrender.com'
+]
+
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://online-event-management-system-project.onrender.com",
+]
 
 
 # Application definition
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 INSTALLED_APPS = [
     'django.contrib.admin',
